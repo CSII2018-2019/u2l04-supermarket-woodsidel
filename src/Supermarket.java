@@ -1,50 +1,58 @@
 import javax.swing.JOptionPane;
 
 public class Supermarket {
-	String color;
-	String expiration;
-	Double weightProduct;
 	public static void main(String[] args) {
-		for(int i = 0; i < 5; i++) {
-			String nameProduct = JOptionPane.showInputDialog("What is the name of your product?");
-			if(nameProduct.equals(" ")) {
-				nameProduct = "Lasagna";
-			}
-			String priceProduct = JOptionPane.showInputDialog("What is the unit price of your product?");
-			double unitPrice = Double.parseDouble(priceProduct);
-			if(unitPrice == 0) {
-				unitPrice = 19.99;
-			}
-			String quantityProduct = JOptionPane.showInputDialog("What is the quantity of your product?");
-			int quantity = Integer.parseInt(quantityProduct);
-			if(quantity == 0) {
-				quantity = 4;
-			}
-			String typeProduct = JOptionPane.showInputDialog("What type product is your product?");
-			if(typeProduct.equals(" ")) {
-				typeProduct = "Can";
-			}
-			if(typeProduct.equals("Flowers")) {
-				String color = JOptionPane.showInputDialog("What is the color of the flowers?");
-				if(color.equals(" ")) {
-					color = "Blue";
-				}
-			}
-			if(typeProduct.equals("Produce")) {
-				String expirationDate = JOptionPane.showInputDialog("What is the expiration date of the produce?");
-				if(expirationDate.equals(" ")) {
-					expirationDate = "1/1/11";
-				}
-				String weightProduct = JOptionPane.showInputDialog("What is the weight of the produce in grams?");
-				double weight = Double.parseDouble(weightProduct);
-				if(weight == 0) {
-					weight = 5;
-				}
-			}
-	
-			GroceryItem item = new GroceryItem(nameProduct,unitPrice,quantity,typeProduct,color,expirationDate,weight);
+		double totalCost = 0;
+		String typeOfProduct = JOptionPane.showInputDialog("At the supermarket, we have Lasagna, Celery. Hibiscus, Oranges, and Soup/nWhat do you want?");
+		String numProduct = JOptionPane.showInputDialog("How many would you like?");
+		String quantityFinal = null;
+		GroceryItem lasagna = new GroceryItem("Lasagna", 19.99, 5,"Can","Red","1/11/11",10);
+		GroceryItem celery = new GroceryItem("Celery", 3.24, 10,"Produce","Green","1/11/11",3);
+		GroceryItem hibiscus = new GroceryItem("Hibiscus", 19.99, 5,"Flowers","Pink","1/11/11",10);
+		GroceryItem oranges = new GroceryItem("Oranges", 5.32, 5,"Produce","Orange","1/11/11",10);
+		GroceryItem soup = new GroceryItem("Soup", 7.39, 5,"Can","Red","1/11/11",10);
+		int num = Integer.parseInt(numProduct);
+		if (typeOfProduct.equals("Lasagna")) {
+			int newQuantity = Cans.getQuantity() - num;
+			Cans.setQuantity(newQuantity);
+			quantityFinal = String.valueOf(newQuantity);
 			
+			totalCost = totalCost + num * Cans.getUnitPrice();
 		}
+		else if (typeOfProduct.equals("Celery")) {
+			int newQuantity = Produce.getQuantity() - num;
+			Produce.setQuantity(newQuantity);
+			quantityFinal = String.valueOf(newQuantity);
+			
+			totalCost = totalCost + num * Produce.getUnitPrice();
+		}
+		else if (typeOfProduct.equals("Hibiscus")) {
+			int newQuantity = Flowers.getQuantity() - num;
+			Flowers.setQuantity(newQuantity);
+			quantityFinal = String.valueOf(newQuantity);
+			
+			totalCost = totalCost + num * Flowers.getUnitPrice();
+		}
+		else if (typeOfProduct.equals("Oranges")) {
+			int newQuantity = Produce.getQuantity() - num;
+			Produce.setQuantity(newQuantity);
+			quantityFinal = String.valueOf(newQuantity);
+			
+			totalCost = totalCost + num * Produce.getUnitPrice();
+		}
+		else if (typeOfProduct.equals("Soup")) {
+			int newQuantity = Cans.getQuantity() - num;
+			Cans.setQuantity(newQuantity);
+			quantityFinal = String.valueOf(newQuantity);
+			
+			totalCost = totalCost + num * Cans.getUnitPrice();
+		}
+		JOptionPane.showMessageDialog(null, "Total price: $"+totalCost);
+		JOptionPane.showMessageDialog(null, "Total quantity for "+typeOfProduct+": "+quantityFinal);
 	}
 
-}
+
+
+	}
+
+

@@ -1,7 +1,9 @@
+import javax.swing.JOptionPane;
 
 public class Flowers extends GroceryItem{
-	public void Flowers(double u, int q, String f, String c){
-		
+	public Flowers(String n, double u, int q, String t, String c, String e, double w, String f) {
+		super(n, u, q, t, c, e, w);
+
 		setPrice(u, f);
 		setQuantity(q);
 		setColor(c);
@@ -11,6 +13,7 @@ public class Flowers extends GroceryItem{
 		
 	}
 	public static double setPrice(double u,String f) { 
+		f = JOptionPane.showInputDialog("Is your order an arrangement? ");
 		unitPrice = u;
 		double basePrice = unitPrice;
 		double price = basePrice + ((15/100)*basePrice);

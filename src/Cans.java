@@ -1,6 +1,7 @@
 
 public class Cans extends GroceryItem {
-	public void Cans(double u, int q){
+	public Cans(String n, double u, int q, String t, String c, String e, double w) {
+		super(n, u, q, t, c, e, w);
 		setPrice(u);
 		setQuantity(q);
 		getUnitPrice();
@@ -21,6 +22,7 @@ public class Cans extends GroceryItem {
 	public static int getQuantity() {
 		return quantity;
 	}
+	
 	
 	
 }

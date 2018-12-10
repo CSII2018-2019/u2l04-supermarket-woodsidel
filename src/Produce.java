@@ -1,7 +1,8 @@
 
 public class Produce extends GroceryItem{
 	
-	public void Produce(double u, int q, String e, double w){
+	public Produce(String n, double u, int q, String t, String c, String e, double w) {
+		super(n, u, q, t, c, e, w);
 		setPrice(u);
 		setQuantity(q);
 		getUnitPrice();
